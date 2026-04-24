@@ -20,6 +20,21 @@ export function initKeyboard() {
             applyGlobalSpeed(1.0);
             return;
         }
+
+        // Max Speed: Code 'KeyM' OR specific keys (m, M, ة)
+        if (code === 'KeyM' || key === 'm' || key === 'M' || key === 'ة') {
+            e.preventDefault();
+            applyGlobalSpeed(16.0);
+            return;
+        }
+
+        // Min Speed: Code 'KeyS' OR specific keys (s, S, س)
+        if (code === 'KeyS' || key === 's' || key === 'S' || key === 'س') {
+            e.preventDefault();
+            applyGlobalSpeed(0.1);
+            return;
+        }
+
         if (keyLower === 'arrowup'   || keyLower === 'arrowright') { e.preventDefault(); applyGlobalSpeed(parseFloat((currentSpeed + STEP).toFixed(2))); }
         if (keyLower === 'arrowdown' || keyLower === 'arrowleft')  { e.preventDefault(); applyGlobalSpeed(parseFloat((currentSpeed - STEP).toFixed(2))); }
     }, true);
